@@ -58,6 +58,7 @@ one_day_ago = current_date - timedelta(days=1)
 
 # Format the date as "YYYY-MM-DD"
 formatted_date = one_day_ago.strftime("%Y-%m-%d")
+
 # Build the query search string
 query_search = f"in:{channel} after:{formatted_date}"
 print("Query Search:")
@@ -117,6 +118,9 @@ one_day_ago = current_date - timedelta(days=1)
 
 # Format the date as "YYYY-MM-DD"
 formatted_date = one_day_ago.strftime("%Y-%m-%d")
+
+
+
 # Build the query search string for sign-ups
 query_search = f"in:#welcome after:{formatted_date}"
 print("Sign-ups Query Search:")
@@ -165,8 +169,12 @@ while True:
 print("Sign-ups by Day Results:")
 print(daily_sign_ups_results)
 
+driver.quit()
+
+
 # Format the date as "YYYY/MM/DD"
 formatted_date = one_day_ago.strftime("%Y/%m/%d")
+
 server = {
     "name": name,
     "date": formatted_date,
@@ -178,8 +186,9 @@ server = {
 }
 
 # Save the server data in a JSON file
+# Save the server data in a JSON file
 json_filename = "server_data.json"
-json_data = {}
+json_data = {}  # Initialize an empty dictionary
 
 # Check if the JSON file already exists
 if os.path.isfile(json_filename):
@@ -198,6 +207,7 @@ with open(json_filename, 'w') as json_file:
     json.dump(json_data, json_file, indent=4)
 
 print(f"Data saved to {json_filename}")
+
 
 # Create or update the CSV file based on the JSON data
 csv_filename = "server_data.csv"
