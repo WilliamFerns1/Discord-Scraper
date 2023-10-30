@@ -98,12 +98,20 @@ while True:
     if queries_results == "Searching…":
         results_container = driver.find_element(by="xpath", value="/html/body/div/1/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div/div[3]/div/section/header/div[1]/div")
         time.sleep(random.uniform(3.0, 5.0))
-        query_results = results_container.text
+        queries_results = results_container.text
 
     else:
         break
 # Display queries_results
 print("Queries Results:")
+if queries_results == "No Results":
+    queries_results = 0
+else:
+    # Extract the entire number from the results
+    import re
+    matches = re.findall(r'\d+', queries_results)
+    queries_results = int(''.join(matches))
+
 print(queries_results)
 
 driver.quit()
@@ -167,9 +175,19 @@ while True:
 
 # Display daily_sign_ups_results
 print("Sign-ups by Day Results:")
-print(daily_sign_ups_results)
+print("Queries Results:")
+if daily_sign_ups_results == "No Results":
+    daily_sign_ups_results = 0
+else:
+    # Extract the entire number from the results
+    import re
+    matches = re.findall(r'\d+', daily_sign_ups_results)
+    daily_sign_ups_results = int(''.join(matches))
 
+print(daily_sign_ups_results)
 driver.quit()
+
+# Lets try it on another server.
 
 
 # Format the date as "YYYY/MM/DD"
